@@ -7,7 +7,11 @@ typedef enum {
 	MAX6675_FAHRENHEIT
 } MAX6675TempScale;
 
-typedef unsigned int MAX6675;
+
+typedef struct MAX6675 {
+	int	SPIChannel;
+	MAX6675TempScale scale;
+} *MAX6675;
 
 
 MAX6675 MAX6675Setup(int SPIChannel);

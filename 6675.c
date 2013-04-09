@@ -6,11 +6,13 @@
 int main(void) {
 	MAX6675 max6675 = MAX6675Setup(0);
 
-	MAX6675SetScale(max6675, MAX6675_CELCIUS);
-
 	if (max6675) {
 		while(1) {
-			printf("%0.2fC\n", MAX6675GetTemp(max6675));
+			printf("%0.2fC %0.2fK %0.2fF\n", 
+				MAX6675GetTempC(max6675),
+				MAX6675GetTempK(max6675),
+				MAX6675GetTempF(max6675)
+			);
 
 			sleep(1);
 		}
