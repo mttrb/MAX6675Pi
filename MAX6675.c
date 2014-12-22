@@ -11,18 +11,18 @@ MAX6675 MAX6675Setup(int SPIChannel) {
 	if (wiringPiSPISetup(SPIChannel, MAX6675_CLOCK_SPEED) == -1) {
 		return 0;
 	}
-	
+
 	MAX6675 max6675 = (MAX6675)malloc(sizeof(struct MAX6675));
 
 	max6675->SPIChannel = SPIChannel;
-	max6675->scale = MAX6675_CELCIUS;
-	
+	max6675->scale = MAX6675_CELSIUS;
+
 	return max6675;
 }
 
 void MAX6675Free(MAX6675 max6675) {
 	if (max6675) {
-		free(max6675);	
+		free(max6675);
 	}
 }
 
@@ -37,17 +37,17 @@ MAX6675TempScale MAX6675GetScale(MAX6675 max6675) {
 		return max6675->scale;
 	}
 
-	return MAX6675_CELCIUS;
+	return MAX6675_CELSIUS;
 }
 
 float MAX6675GetTempC(MAX6675 max6675) {
-	if (max6675 == 0) { 
+	if (max6675 == 0) {
 		return 0.0f;
 	}
 
 	char buffer[2] = {0, 0};
 
-	int ret = wiringPiSPIDataRW(max6675->SPIChannel, buffer, 2);		
+	int ret = wiringPiSPIDataRW(max6675->SPIChannel, buffer, 2);
 
 	if (ret != 2) {
 		return 0.0f;
@@ -76,9 +76,9 @@ float MAX6675GetTemp(MAX6675 max6675) {
 
 			case MAX6675_FAHRENHEIT:
 				return MAX6675GetTempF(max6675);
-		
+
 			default:
-				return MAX6675GetTempC(max6675);	
+				return MAX6675GetTempC(max6675);
 		}
 	} else {
 		return 0.0f;
