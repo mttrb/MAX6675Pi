@@ -1,0 +1,5 @@
+Max6675 pin 1 GND to Pi pin 6 GND
+Max6675 pin 2 VCC to Pi Pin 1 3V DC Power
+Max6675 pin 3 DO to Pi pin 21, MISO SPI (GPIO 13)
+Max6675 pin 4 CS to Pi pin 24, CE0 SPI (GPIO 10) (note: for SPI device 0) *
+Max6675 pin 5 CLK to Pi pin 23, SCLK SPI (GPIO 14)
